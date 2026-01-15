@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hi Sivasri </title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+html,body{
+  width:100%;
+  height:100%;
+  background:#000;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* ===== STAR BACKGROUND ===== */
+.star{
+  position:absolute;
+  width:2px;height:2px;
+  background:white;
+  border-radius:50%;
+  opacity:.8;
+  animation:twinkle 4s infinite, drift linear infinite;
+}
+@keyframes twinkle{
+  0%,100%{opacity:.2}
+  50%{opacity:1}
+}
+@keyframes drift{
+  from{transform:translateY(100vh)}
+  to{transform:translateY(-10vh)}
+}
+
+/* ===== SCREEN ===== */
+.screen{
+  position:absolute;
+  width:80%;
+  max-width:500px;
+  padding:2rem;
+  background:linear-gradient(145deg,#1a1a2e,#2b1055);
+  border-radius:25px;
+  text-align:center;
+  box-shadow:0 0 50px rgba(255,77,109,.5);
+  animation:floatCard 4s ease-in-out infinite;
+  transition:1s ease;
+}
+.hidden{
+  opacity:0;
+  pointer-events:none;
+  transform:scale(.85) rotateY(90deg);
+}
+@keyframes floatCard{
+  0%{transform:translateY(0)}
+  50%{transform:translateY(-12px)}
+  100%{transform:translateY(0)}
+}
+
+/* ===== BUTTON ===== */
+.btn{
+  padding:14px 36px;
+  border:none;
+  border-radius:30px;
+  background:linear-gradient(135deg,#ff4d6d,#ff006e);
+  color:#fff;
+  cursor:pointer;
+  margin-top:25px;
+  box-shadow:0 0 25px #ff4d6d;
+  transition:.3s;
+}
+.btn:hover{transform:scale(1.1);}
+
+/* ===== ENVELOPE ===== */
+.envelope{
+  width:200px;height:120px;
+  background:#111;
+  border-radius:15px;
+  margin:1rem auto;
+  box-shadow:0 0 30px #ff4d6d;
+  animation:wobble 2s infinite;
+  cursor:pointer;
+}
+@keyframes wobble{
+  0%{transform:rotate(0)}
+  50%{transform:rotate(3deg)}
+  100%{transform:rotate(0)}
+}
+.envelope::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(135deg,#ff4d6d,#ff006e);
+  clip-path:polygon(0 0,100% 0,50% 55%);
+}
+
+/* ===== GIFTS ===== */
+.gifts{display:flex;justify-content:center;gap:20px;}
+.gift{
+  width:80px;height:80px;
+  background:linear-gradient(135deg,#ff4d6d,#ff006e);
+  border-radius:15px;
+  box-shadow:0 0 25px #ff4d6d;
+  cursor:pointer;
+  animation:bounce 1.5s infinite;
+}
+@keyframes bounce{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-12px)}
+}
+
+/* ===== NEW: MEMORY ORBS ===== */
+.orbs{
+  position:absolute;
+  inset:0;
+  overflow:hidden;
+}
+.orbs span{
+  position:absolute;
+  width:14px;height:14px;
+  border-radius:50%;
+  background:rgba(255,255,255,.7);
+  filter:blur(2px);
+  animation:orbFloat linear infinite;
+}
+@keyframes orbFloat{
+  from{transform:translateY(120vh) scale(.4)}
+  to{transform:translateY(-20vh) scale(1.2)}
+}
+
+/* ===== CAKE ===== */
+.cake{
+  font-size:80px;
+  animation:flicker 1.5s infinite;
+}
+@keyframes flicker{
+  0%,100%{filter:drop-shadow(0 0 15px #ff4d6d)}
+  50%{filter:drop-shadow(0 0 35px #ff006e)}
+}
+
+/* ===== POPUP ===== */
+.popup{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.8);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:99;
+}
+.popup div{
+  background:rgba(255,255,255,.08);
+  padding:2rem;
+  border-radius:20px;
+  color:#fff;
+  backdrop-filter:blur(15px);
+}
+
+h1,h2,h3,p{color:#fff}
+</style>
+</head>
+
+<body>
+
+<!-- SCREENS -->
+<div class="screen" id="s1">
+  <h2>Made Something special</h2>
+  <div class="envelope" onclick="go(2)"></div>
+  <p>Tap the envelope</p>
+</div>
+
+<div class="screen hidden" id="s2">
+  <h3>Hey Sivasri 💌</h3>
+  <p>This is for my favorite person✨</p>
+  <button class="btn" onclick="go(3)">Enter Gift Room</button>
+</div>
+
+<div class="screen hidden" id="s3">
+  <h2>Pick a Gift 🎁</h2>
+  <div class="gifts">
+    <div class="gift" onclick="gift1()"></div>
+    <div class="gift" onclick="gift2()"></div>
+    <div class="gift" onclick="gift3()"></div>
+  </div>
+  <button class="btn" onclick="go('3b')">Continue</button>
+</div>
+
+<!-- 🌙 NEW SCREEN AFTER GIFTS -->
+<div class="screen hidden" id="s3b">
+  <div class="orbs"></div>
+  <h2>Some moments don’t need words ✨</h2>
+  <p>
+    Just a quiet pause,<br>
+    floating somewhere between smiles and memories.
+  </p>
+  <button class="btn" onclick="go(4)">Thank You</button>
+</div>
+
+<div class="screen hidden" id="s4">
+  <h2>Your Cake 🎂</h2>
+  <div class="cake">🎂</div>
+  <p>Make a wish ✨</p>
+  <button class="btn" onclick="go(5)">Finish</button>
+</div>
+
+<div class="screen hidden" id="s5">
+  <h1>Happy Birthday 🖤</h1>
+  <p>You are </p>
+</div>
+
+<script>
+function go(n){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.add('hidden'));
+  document.getElementById('s'+n).classList.remove('hidden');
+}
+
+/* stars */
+for(let i=0;i<130;i++){
+  let s=document.createElement('div');
+  s.className='star';
+  s.style.left=Math.random()*100+'vw';
+  s.style.top=Math.random()*100+'vh';
+  s.style.animationDuration=(6+Math.random()*10)+'s';
+  document.body.appendChild(s);
+}
+
+/* memory orbs */
+document.querySelectorAll('.orbs').forEach(container=>{
+  for(let i=0;i<20;i++){
+    let o=document.createElement('span');
+    o.style.left=Math.random()*100+'%';
+    o.style.animationDuration=(8+Math.random()*10)+'s';
+    container.appendChild(o);
+  }
+});
+
+/* gift popups */
+function popup(msg){
+  let p=document.createElement('div');
+  p.className='popup';
+  p.innerHTML=`<div>${msg}<br><br><button class="btn" onclick="this.parentElement.parentElement.remove()">Close</button></div>`;
+  document.body.appendChild(p);
+}
+function gift1(){popup("🌟 You are literally the brightest star in my life.");}
+function gift2(){popup("💖 This heart is for every moment you made things better.");}
+function gift3(){popup("🎆 Surprise! Your smile is my favorite thing.");}
+</script>
+
+</body>
+</html>

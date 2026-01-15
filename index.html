@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Surprise for Sivasri 🎉</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;800&display=swap" rel="stylesheet">
+
+<style>
+body{
+    margin:0;
+    font-family:'Poppins',sans-serif;
+    overflow:hidden;
+}
+
+/* Screens */
+.screen{
+    width:100vw;
+    height:100vh;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    text-align:center;
+    color:white;
+}
+
+/* Bright backgrounds for intro screens */
+#s1{background:linear-gradient(120deg,#ff0080,#ff8c00);}
+#s3{background:linear-gradient(120deg,#7f00ff,#e100ff);}
+
+/* Screen 2 background */
+#s2{
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
+    background-size: 400% 400%;
+    animation: bgMove 15s ease infinite;
+    overflow:hidden;
+}
+
+/* Gradient animation */
+@keyframes bgMove {
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+/* Story text */
+.story-title{
+    font-size:3rem;
+    text-shadow:0 0 20px #fff,0 0 40px #ffd700;
+    margin-bottom:20px;
+}
+.story-line{
+    font-size:1.5rem;
+    margin:10px 0;
+    opacity:0;
+    animation:fadeIn 1s forwards;
+}
+.story-line:nth-child(2){animation-delay:0.5s;}
+.story-line:nth-child(3){animation-delay:1.5s;}
+.story-line:nth-child(4){animation-delay:2.5s;}
+
+@keyframes fadeIn{
+    0%{opacity:0; transform:translateY(20px);}
+    100%{opacity:1; transform:translateY(0);}
+}
+
+/* Button hover glow */
+#s2{
+    background: linear-gradient(135deg, #ff0080, #fffc00, #00ffff, #ff00ff);
+    background-size: 400% 400%;
+    animation: bgMove 15s ease infinite;
+    overflow:hidden;
+}
+
+/* Animate the gradient */
+@keyframes bgMove {
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+/* Story text */
+.story-title{
+    font-size:3rem;
+    text-shadow:0 0 25px #fff,0 0 50px #ffd700;
+    margin-bottom:20px;
+}
+.story-line{
+    font-size:1.5rem;
+    margin:10px 0;
+    opacity:0;
+    animation:fadeIn 1s forwards;
+}
+.story-line:nth-child(2){animation-delay:0.5s;}
+.story-line:nth-child(3){animation-delay:1.5s;}
+.story-line:nth-child(4){animation-delay:2.5s;}
+
+@keyframes fadeIn{
+    0%{opacity:0; transform:translateY(20px);}
+    100%{opacity:1; transform:translateY(0);}
+}
+
+/* Button hover glow */
+#s2 button:hover{
+    box-shadow:0 0 30px gold,0 0 60px orange;
+    transform:scale(1.05);
+    transition:0.3s;
+}
+
+/* Floating confetti */
+.confetti{
+    position:absolute;
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    opacity:0.8;
+    animation:fall 6s linear infinite;
+}
+@keyframes fall{
+    0%{transform:translateY(-20px) rotate(0deg);}
+    100%{transform:translateY(110vh) rotate(360deg);}
+}
+#s3{
+  position:relative;
+  height:100vh;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  color:white;
+  background:
+    radial-gradient(circle at top,#ff00cc,#333399,#050014);
+}
+
+/* floating stars */
+.stars{
+  position:absolute;
+  width:200%;
+  height:200%;
+  background:
+    radial-gradient(2px 2px at 20% 30%,#fff,transparent),
+    radial-gradient(2px 2px at 80% 60%,#fff,transparent),
+    radial-gradient(1.5px 1.5px at 40% 80%,#fff,transparent);
+  animation: drift 40s linear infinite;
+  opacity:.6;
+}
+
+@keyframes drift{
+  from{transform:translate(0,0);}
+  to{transform:translate(-200px,-200px);}
+}
+
+/* glowing title */
+.glow-text{
+  font-size:3.2rem;
+  margin-bottom:10px;
+  animation:pulseGlow 2.5s infinite;
+}
+
+@keyframes pulseGlow{
+  0%{text-shadow:0 0 10px #ff5cff;}
+  50%{text-shadow:0 0 30px #ffffff,0 0 60px #ff5cff;}
+  100%{text-shadow:0 0 10px #ff5cff;}
+}
+
+.sub{
+  font-size:1.2rem;
+  opacity:.85;
+  margin-bottom:40px;
+}
+
+/* wish button */
+.wish-btn{
+  position:relative;
+  padding:18px 45px;
+  font-size:1.3rem;
+  border:none;
+  border-radius:50px;
+  cursor:pointer;
+  background:linear-gradient(135deg,#ff00cc,#3333ff);
+  color:white;
+  overflow:hidden;
+  box-shadow:0 0 25px rgba(255,0,200,.6);
+}
+
+.wish-btn span{
+  position:relative;
+  z-index:2;
+}
+
+/* energy wave */
+.wish-btn .energy{
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle,#ffffff,transparent 60%);
+  opacity:0;
+  animation:charge 2s infinite;
+}
+
+@keyframes charge{
+  0%{opacity:0; transform:scale(0.5);}
+  50%{opacity:.4;}
+  100%{opacity:0; transform:scale(1.5);}
+}
+
+.wish-btn:hover{
+  transform:scale(1.08);
+  box-shadow:0 0 50px rgba(255,0,255,1);
+}
+
+/* Last page: unique pulsating radial gradients */
+#s4{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    background: radial-gradient(circle at 50% 50%, #ff5f6d, #ffc371, #00f260, #0575e6, #ff5f6d);
+    background-size: 400% 400%;
+    animation: pulseGradient 12s ease infinite;
+}
+@keyframes pulseGradient{
+    0%{background-position:0% 50%;}
+    25%{background-position:50% 100%;}
+    50%{background-position:100% 50%;}
+    75%{background-position:50% 0%;}
+    100%{background-position:0% 50%;}
+}
+
+/* Buttons */
+button{
+    margin-top:30px;
+    padding:18px 45px;
+    font-size:22px;
+    border:none;
+    border-radius:40px;
+    cursor:pointer;
+    background:linear-gradient(to right,#fff000,#ff8c00);
+    box-shadow:0 0 20px rgba(255,255,255,0.7);
+}
+
+/* Glow text */
+.glow{
+    font-size:3.2rem;
+    text-shadow:0 0 25px gold,0 0 50px orange;
+}
+
+/* Fireworks / Cracker sparks */
+.spark{
+    position:absolute;
+    border-radius:50%;
+    animation:burst 12s ease-out forwards;
+    pointer-events:none;
+    filter: drop-shadow(0 0 10px white);
+}
+@keyframes burst{
+    0%{transform:translate(0,0) scale(0.5); opacity:1;}
+    30%{transform:translate(var(--x1),var(--y1)) scale(1.2); opacity:1;}
+    60%{transform:translate(var(--x2),var(--y2)) scale(0.8); opacity:0.8;}
+    100%{transform:translate(var(--x3),var(--y3)) scale(0); opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- Screen 1 -->
+<div class="screen" id="s1" style="display:flex">
+    <h1>🎁 Hey Sivasri 👀</h1>
+    <p>Today isn’t an ordinary day…</p>
+    <button onclick="next(2)">Open Surprise 🎉</button>
+</div>
+
+<!-- Screen 2 -->
+<!-- Screen 2: Brighter & Upgraded Story Screen -->
+<div class="screen" id="s2">
+    <h1 class="story-title">💫 A Year Full of Magic</h1>
+    <div class="story-line">This year was full of smiles, strength, and fun.</div>
+    <div class="story-line">Every laugh, every small win, and every memory made it special.</div>
+    <div class="story-line">You’ve made every moment brighter for everyone around you!</div>
+    <button onclick="next(3)">Next ➡</button>
+</div>
+
+
+<!-- Screen 3 -->
+<div class="screen" id="s3">
+  <div class="stars"></div>
+
+  <h1 class="glow-text">✨ Are you ready?</h1>
+  <p class="sub">Your birthday magic is waiting…</p>
+
+  <button class="wish-btn" onclick="wish()">
+    <span>Make a Wish ⭐</span>
+    <div class="energy"></div>
+  </button>
+</div>
+
+<!-- Screen 4 Fireworks -->
+<div class="screen" id="s4">
+    <h1 class="glow">🎉 Happy Birthday Sivasri 🎉</h1>
+    <p style="max-width:600px;font-size:1.4rem;">
+        On this special day, may your life be filled with endless happiness, 
+        beautiful surprises, exciting adventures, and dreams that come true.
+        May every smile you give return to you twice, and may every step you take
+        lead you closer to something amazing. You deserve all the joy today and always! 
+    </p>
+    <a href="bday.html"><button>One more</button></a>
+</div>
+
+<script>
+function next(n){
+    document.querySelectorAll('.screen').forEach(s=>s.style.display='none');
+    document.getElementById('s'+n).style.display='flex';
+}
+
+function wish(){
+    next(4);
+    fireworks();
+}
+
+function fireworks(){
+    for(let i=0;i<400;i++){ // more sparks
+        let s=document.createElement("div");
+        s.className="spark";
+        // Random bright color
+        s.style.background=`hsl(${Math.random()*360},100%,50%)`;
+        // Random size 6px - 18px
+        let size = Math.random()*12 + 6;
+        s.style.width = size + "px";
+        s.style.height = size + "px";
+        // start at center
+        s.style.left="50%";
+        s.style.top="50%";
+        // Random explosion path
+        let x1 = (Math.random()*1000-500)+"px";
+        let y1 = (Math.random()*1000-500)+"px";
+        let x2 = (Math.random()*1200-600)+"px";
+        let y2 = (Math.random()*1200-600)+"px";
+        let x3 = (Math.random()*1400-700)+"px";
+        let y3 = (Math.random()*1400-700)+"px";
+        s.style.setProperty("--x1", x1);
+        s.style.setProperty("--y1", y1);
+        s.style.setProperty("--x2", x2);
+        s.style.setProperty("--y2", y2);
+        s.style.setProperty("--x3", x3);
+        s.style.setProperty("--y3", y3);
+        document.body.appendChild(s);
+        setTimeout(()=>s.remove(),12000); // remove after 12s
+    }
+}
+for(let i=0;i<25;i++){
+    let c=document.createElement("div");
+    c.className="confetti";
+    c.style.background=`hsl(${Math.random()*360},100%,50%)`;
+    c.style.left=Math.random()*100+"%";
+    c.style.animationDelay=Math.random()*6+"s";
+    c.style.width=c.style.height=(Math.random()*6+4)+"px";
+    document.getElementById("s2").appendChild(c);
+}
+</script>
+
+</body>
+</html>

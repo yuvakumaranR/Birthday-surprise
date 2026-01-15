@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Happy Birthday Sivasri</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+/* ===== GLOBAL ===== */
+body {
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);
+  overflow:hidden;
+  font-family:'Poppins',sans-serif;
+}
+
+/* ===== TITLE ===== */
+h1{
+  position:absolute;
+  top:40px;
+  font-size:3rem;
+  color:white;
+  text-shadow:0 0 25px #ffb3ff,0 0 50px #ff66ff;
+  animation:pulse 2.5s infinite;
+}
+@keyframes pulse{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.05)}
+}
+
+/* ===== WRAPPER ===== */
+.wrapper {
+  position: relative;
+  width: 240px;
+  height: 480px;
+}
+
+/* ===== CAKE ===== */
+.cake {
+  position: absolute;
+  bottom: 0;
+}
+
+.lyr {
+  width: 240px;
+  height: 96px;
+  position: absolute;
+  border-radius: 120px / 24px ;
+}
+
+.lyr-1 { background:#f7d7b5; bottom:0; }
+.lyr-2 { background:#c68642; bottom:48px; }
+.lyr-3 {
+  background:#8d5524;
+  bottom:96px;
+  background-image:radial-gradient(ellipse 7.5rem 1.5rem at 7.5rem 1.5rem,
+  #ffe066 0%, #e09f3e 40%, transparent 70%);
+}
+
+/* ===== CANDLE ===== */
+.candle {
+  position:absolute;
+  background:red;
+  width:32px;
+  height:160px;
+  left:104px;
+  bottom:160px;
+  border-radius:20px / 10px;
+  background-image:repeating-linear-gradient(45deg,white 0 10%,transparent 10% 20%);
+}
+
+.candle::before{
+  content:'';
+  position:absolute;
+  background:black;
+  width:4px;
+  height:32px;
+  left:15px;
+  top:-22px;
+  border-radius:4px;
+}
+
+.candle::after{
+  content:'';
+  display:block;
+  width:32px;
+  height:16px;
+  background:red;
+  border-radius:50%;
+}
+
+/* ===== FLAME FRAME ===== */
+.fram {
+  position:absolute;
+  left:104px;
+  transition:opacity 2s ease;
+}
+
+/* ===== SMOKE ===== */
+.smoke {
+  background:rgba(200,200,200,.8);
+  width:6px;
+  height:6px;
+  position:relative;
+  animation:burn-smoke 1s infinite ease-out;
+}
+
+.smk-1{left:8px}
+.smk-2{left:-8px}
+.smk-3{left:16px}
+.smk-4{left:24px}
+.smk-5{left:32px}
+
+/* ===== FLAME ===== */
+.flm-part {
+  width:32px;
+  height:32px;
+  border-radius:50%;
+  position:relative;
+  animation-iteration-count:infinite;
+}
+
+.red{background:red; opacity:.7; animation:burn-red 1s infinite}
+.orange{background:orange; box-shadow:0 0 20px orange; animation:burn-orange .5s infinite}
+.yellow{background:yellow; box-shadow:0 0 20px yellow; animation:burn-yellow 1.4s infinite}
+.white{background:white; box-shadow:0 0 20px white; animation:burn-white 1.6s infinite}
+
+/* ===== ANIMATIONS ===== */
+@keyframes burn-smoke{
+  from{transform:scale(1);opacity:1}
+  to{transform:scale(4);opacity:0;top:-100px}
+}
+@keyframes burn-red{0%,100%{transform:scale(1.8)}50%{transform:scale(2)}}
+@keyframes burn-orange{0%,100%{transform:scale(1.6)}50%{transform:scale(1.8)}}
+@keyframes burn-yellow{0%,100%{transform:scale(1.4)}50%{transform:scale(1.6)}}
+@keyframes burn-white{0%,100%{transform:scale(1)}50%{transform:scale(1.2)}}
+
+/* ===== POPUP ===== */
+.popup{
+  position:fixed;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(0,0,0,.6);
+  backdrop-filter:blur(10px);
+  opacity:0;
+  pointer-events:none;
+  transition:1s;
+}
+
+.popup.show{
+  opacity:1;
+  pointer-events:auto;
+}
+
+.popup-content{
+  padding:40px 60px;
+  background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+  border-radius:30px;
+  font-size:1.8rem;
+  font-weight:bold;
+  color:#000;
+  box-shadow:0 0 60px rgba(255,255,255,.8);
+  animation:pop 1s ease;
+}
+
+@keyframes pop{
+  from{transform:scale(.4);opacity:0}
+  to{transform:scale(1);opacity:1}
+}
+</style>
+</head>
+
+<body>
+
+<h1>🎉 Happy Birthday Sivasri 🎂</h1>
+
+<div class="wrapper">
+  <div class="cake">
+    <div class="lyr lyr-1"></div>
+    <div class="lyr lyr-2"></div>
+    <div class="lyr lyr-3"></div>
+  </div>
+
+  <div class="candle"></div>
+
+  <div class="fram" id="flame">
+    <div class="smoke smk-1"></div>
+    <div class="smoke smk-2"></div>
+    <div class="smoke smk-3"></div>
+    <div class="smoke smk-4"></div>
+    <div class="smoke smk-5"></div>
+
+    <div class="flm-part red"></div>
+    <div class="flm-part orange"></div>
+    <div class="flm-part yellow"></div>
+    <div class="flm-part white"></div>
+  </div>
+</div>
+
+<div class="popup" id="popup">
+  <div class="popup-content">
+     May your life glow brighter every year 
+     <a href="invite.html/invite.html"><button>Finally</button></a>
+  </div>
+</div>
+
+<script>
+/* Turn off flame faster */
+setTimeout(()=>{
+  document.getElementById("flame").style.opacity = 0;
+},3000);
+
+/* Popup comes later with more impact */
+setTimeout(()=>{
+  document.getElementById("popup").classList.add("show");
+},9000);
+</script>
+
+
+</body>
+</html>
